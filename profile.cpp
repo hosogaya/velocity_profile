@@ -1,4 +1,6 @@
 #include "profile.h"
+#include <iostream>
+#include <fstream>
 constexpr float pi_profile = atanf(1) * 4;
 constexpr float _180pi_profile = 180 / (atanf(1) * 4);
 
@@ -97,12 +99,18 @@ int main(){
     float max_acc = 30.0;
     const float period = 0.1;
     int i = 0;
+
+    std::ofstream ofs("./output.csv");
+    if (!ofs){
+        std::cout << "Can not open the file!!" << std::endl;
+        return -1;
+    }
     
     while (dist > 1.0){
         float acc = pro.calAcc(dist, period, vel, max_vel, max_acc);
         vel = std::min(vel + acc * period, max_vel);
         dist -= vel * period;
-        std::cout << i << ", " << dist << std::endl;
+        ofs << i << ", " << dist << ", " << vel << std::endl;
         i++;
     }
 

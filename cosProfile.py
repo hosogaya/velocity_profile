@@ -112,7 +112,7 @@ def main():
         i = i + 1
         acc, phi = pro.calAcc(dest = dest - pos, vel = vel, maxVel = maxVel, acc_2 = list_acc[-1], maxAcc = maxAcc, period = period)
         vel = min(vel + acc * period, maxVel)
-        print(vel)
+        print(dest - pos)
         pos = pos + vel * period
         list_acc.append(acc)
         list_vel.append(vel)
