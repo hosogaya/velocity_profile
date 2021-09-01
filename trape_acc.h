@@ -9,7 +9,7 @@ class TrapeAcc{
         void reset(const float dist, const float acc_s, const float vel_s, const float acc_m, const float vel_m, const float jark);
         void calParame(const float dist, const float acc_s, const float vel_s, const float acc_m, const float vel_m, const float jark);
         void calVelAcc(const float dist, const float period, const float vel, const float acc,  float& vel_next, float& acc_next);
-
+        void print();
     private:
         float sign(float val){return val >= 0 ? 1.0 : -1.0;}
     

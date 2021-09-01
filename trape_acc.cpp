@@ -6,13 +6,6 @@ void TrapeAcc::reset(const float dist, const float acc_s, const float vel_s, con
     while(std::abs(dist) < std::abs(this->dist_a1_ + this->dist_a2_ + this->dist_af_ + this->dist_d1_ + this->dist_d2_ + this->dist_df_)){
         this->calParame(dist, acc_s, vel_s, acc_m, this->vel_m_ * 0.8, jark);
     }
-    std::cout << this->time1a_ << ", " << this->time2a_ << ", " << this->timefa_ << std::endl;
-    std::cout << this->time1d_ << ", " << this->time2d_ << ", " << this->timefd_ << std::endl;
-    std::cout << this->dist_a1_ << ", " << this->dist_a2_ << ", " << this->dist_af_ << std::endl;
-    std::cout << this->dist_d1_ << ", " << this->dist_d2_ << ", " << this->dist_df_ << std::endl;
-    std::cout << this->dist_im_ << std::endl;
-    std::cout << this->vel_m_ << std::endl;
-    std::cout << this->acc_ma_  << ", " << this->acc_md_ << std::endl;
 }
 
 void TrapeAcc::calParame(const float dist, const float acc_s, const float vel_s, const float acc_m, const float vel_m, const float jark){
@@ -118,6 +111,17 @@ void TrapeAcc::calVelAcc(const float dist, const float period, const float vel, 
         vel_next = (vel + acc * period);
     }
 }
+
+void TrapeAcc::print(){
+    std::cout << this->time1a_ << ", " << this->time2a_ << ", " << this->timefa_ << std::endl;
+    std::cout << this->time1d_ << ", " << this->time2d_ << ", " << this->timefd_ << std::endl;
+    std::cout << this->dist_a1_ << ", " << this->dist_a2_ << ", " << this->dist_af_ << std::endl;
+    std::cout << this->dist_d1_ << ", " << this->dist_d2_ << ", " << this->dist_df_ << std::endl;
+    std::cout << this->dist_im_ << std::endl;
+    std::cout << this->vel_m_ << std::endl;
+    std::cout << this->acc_ma_  << ", " << this->acc_md_ << std::endl;
+}
+
 
 int main(){
     TrapeAcc pro;
