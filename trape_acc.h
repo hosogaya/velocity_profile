@@ -7,13 +7,22 @@ class TrapeAcc{
         TrapeAcc(){};
         ~TrapeAcc(){};
         void reset(const float dist, const float acc_s, const float vel_s, const float acc_m, const float vel_m, const float jark);
-        void calVelAcc(const float dist, const float period, const float vel, const float acc,  float acc_next, float vel_next);
+        void calParame(const float dist, const float acc_s, const float vel_s, const float acc_m, const float vel_m, const float jark);
+        void calVelAcc(const float dist, const float period, const float vel, const float acc,  float& vel_next, float& acc_next);
 
+    private:
+        float sign(float val){return val >= 0 ? 1.0 : -1.0;}
     
     private:
-        float jark_;
-        float acc_m_;
+        float jark_1a_;
+        float jark_fa_;
+        float jark_1d_;
+        float jark_fd_;
+
+        float acc_ma_;
+        float acc_md_;
         float vel_m_;
+        float t_;
 
         float time1a_;
         float time1d_;
