@@ -1,7 +1,8 @@
-import pandas as pd
 from matplotlib import pyplot as plt
-import numpy as np
+import pandas as pd
 
-data = pd.read_csv('output.csv')
-data.plot()
+data = pd.read_csv("./out.csv")
+# print(data)
+data.plot(x = 'dist_x',  figsize=(10, 20))
+# data.plot()
 plt.show()
