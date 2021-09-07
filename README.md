@@ -83,7 +83,7 @@ d_d &= d_{s1} + d_{12} + d_{2f} \\
 \end{align}
 $$
 
-##　加減速時に走破する距離
+<!-- ##　加減速時に走破する距離
 $$
 \begin{align}
     d_a + d_d &= v_st_{af} + a_st_{a1}\left(t_{af} - \frac{t_{a1}}{2}\right) + \frac{j}{6}\left(t_{a1}^2t_{af} - t_{d1}^2t_{df}\right) + v_mt_{df} \\
@@ -93,17 +93,7 @@ $$
     &+\left(\frac{a_s}{a_{am}^2} + \frac{1}{2a_{am}}\right)\left(\frac{a_s^2}{2j} - v_s\right)^2 + \left(\frac{6v_s + 3a_st_{a1} + jt_{a1}^2}{6a_{am}}\right)\left(\frac{a_s^2}{2j} - v_s\right) \\
     &+ \frac{v_s}{j}(a_{am} - a_s) - \frac{t_{d1}^2}{2}a_s + \frac{j}{6}(t_{a1}^3 - t_{d1}^3)
 \end{align}
-$$
-
-$$x = \left(\frac{a_s}{a_{am}^2} + \frac{1}{2a_{am}} + \frac{1}{2a_{dm}}\right)$$
-$$y = \left\{\frac{a_s}{a_{am}^2}\left(\frac{a_s^2}{j} - 2v_s\right) + \frac{1}{a_{am}}\left(\frac{jt_{a1}}{6} - \frac{a_sa_{am}}{2j} \right) - \frac{jt_{d1}^2}{6a_{dm}} + t_{d1}\right\}$$
-$$z = \left(\frac{a_s}{a_{am}^2} + \frac{1}{2a_{am}}\right)\left(\frac{a_s^2}{2j} - v_s\right)^2 + \left(\frac{6v_s + 3a_st_{a1} + jt_{a1}^2}{6a_{am}}\right)\left(\frac{a_s^2}{2j} - v_s\right)\\ + \frac{v_s}{j}(a_{am} - a_s) - \frac{t_{d1}^2}{2}a_s + \frac{j}{6}(t_{a1}^3 - t_{d1}^3) - d_a - d_d$$とすると
-$$
-\begin{align}
-    &xv_m^2 + yv_m + z = 0 \\
-    \Rightarrow &v_m = \frac{-y}{2x} \pm\frac{\sqrt{y^2 - 4xz}}{2} 
-\end{align}
-$$
+$$ -->
 
 ## 直ちに終端速度に向かう場合
 直ちに終端速度に向かって加減速する場合に走破する距離を$d_i$とする

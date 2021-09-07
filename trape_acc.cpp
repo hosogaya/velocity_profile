@@ -214,9 +214,11 @@ void TrapeAcc::update(Params& param, double t, double period, double acc, double
  * @param vel_m : goal velocity
 */
 void TrapeAcc::Decel(const double jark, const double acc_s, const double vel_s, const double acc_m, const double vel_m){
-    state_ = Dec;
-    t_ = 0.0;
-    this->calParame2(decel_, acc_s, vel_s, acc_m, vel_m, jark);
+    if (state_ != Dec) {
+        state_ = Dec;
+        t_ = 0.0;
+        this->calParame2(decel_, acc_s, vel_s, acc_m, vel_m, jark);
+    }
 }
 void TrapeAcc::print(){
     std::cout << this->time1a_ << ", " << this->time2a_ << ", " << this->timefa_ << std::endl;
@@ -248,8 +250,8 @@ int main(){
     TrapeAcc pro_y;
     double dist_xi = 100.0;
     double dist_yi = 200.0;
-    double dist_x = dist_xi;
-    double dist_y = dist_yi;
+    double dist_x = 0.0;
+    double dist_y = 0.0;
     double acc_s = 0.0;
     double vel_s = 0.0;
     double acc_m = 60.0;
@@ -279,22 +281,22 @@ int main(){
     
     int i = 0;
     ofs << "dist_x, " << "dist_y, "<< "vel_x, " << "vel_y, " << "acc_x, " << "acc_y" << std::endl;
-    pro_x.reset(dist_x, acc_s, vel_s, acc_m, vel_m, jark);
-    pro_y.reset(dist_y, acc_s, vel_s, acc_m, vel_m, jark);
+    pro_x.reset(dist_xi, acc_s, vel_s, acc_m, vel_m, jark);
+    pro_y.reset(dist_yi, acc_s, vel_s, acc_m, vel_m, jark);
     while (true){
-        if (i > 800 and deceleration_flag){
+        if (i > 2700 and deceleration_flag){
             pro_x.Decel(jark, acc_x, vel_x, acc_m, 0.0);
             deceleration_flag = false;
         }
         if (break_flag_x == false) {
-            if(pro_x.calVelAcc2(dist_x, period, vel_x, acc_x, vel_nx, acc_nx) == false) break_flag_x = true;
+            if(pro_x.calVelAcc2(dist_xi - dist_x, period, vel_x, acc_x, vel_nx, acc_nx) == false) break_flag_x = true;
         }
         if (break_flag_y == false) {
-            if(pro_y.calVelAcc2(dist_y, period, vel_y, acc_y, vel_ny, acc_ny) == false) break_flag_y = true;
+            if(pro_y.calVelAcc2(dist_yi - dist_y, period, vel_y, acc_y, vel_ny, acc_ny) == false) break_flag_y = true;
         }
         ofs << i * period << ", ";
-        ofs << dist_xi - dist_x << ", ";
-        ofs << dist_yi - dist_y << ", ";
+        ofs << dist_x << ", ";
+        ofs << dist_y << ", ";
         ofs << vel_x << ", ";
         ofs << vel_y << ", ";
         ofs << acc_x << ", ";
@@ -307,8 +309,8 @@ int main(){
         //     break_flag_y = true;
         // }
         
-        dist_x = dist_x - vel_x * period - acc_x * pow(period, 2.0) * 0.5;
-        dist_y = dist_y - vel_y * period - acc_y * pow(period, 2.0) * 0.5;
+        dist_x += vel_x * period + acc_x * pow(period, 2.0) * 0.5;
+        dist_y += vel_y * period + acc_y * pow(period, 2.0) * 0.5;
         vel_x = vel_nx;
         vel_y = vel_ny;
         acc_x = acc_nx;
